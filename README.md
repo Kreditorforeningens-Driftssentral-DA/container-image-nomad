@@ -35,8 +35,11 @@ NOTE:
 #### Using docker cli
 ```bash
 # Default (print version).
-docker run --rm -it -e NOMAD_ADDR=https://example.nomad.com:4646 kdsda/nomad:scratch-1.2.4 version
-docker run --rm -it -e NOMAD_ADDR=https://example.nomad.com:4646 kdsda/nomad:alpine-1.2.4 version
-docker run --rm -it -e NOMAD_ADDR=https://example.nomad.com:4646 kdsda/nomad:debian-1.2.4 version
+docker run --rm -it kdsda/nomad:scratch-1.2.4
+docker run --rm -it kdsda/nomad:alpine-1.2.4
+docker run --rm -it kdsda/nomad:debian-1.2.4
+
+# List jobs
+docker run --rm -it -e NOMAD_ADDR=https://example.nomad.com:4646 kdsda/nomad:scratch-1.2.4 job status --namespace=default
 ```
 
