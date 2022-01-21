@@ -1,0 +1,30 @@
+ARG IMAGE_VERSION="scratch"
+
+# PRE-IMAGE
+FROM golang:alpine AS pre
+
+ARG NOMAD_VERSION="1.2.4"
+
+# https://www.nomadproject.io/docs/install#from-source
+# OPTIONAL: go build -x -o /srv/exports/nomad -tags "nonvidia release ui" --ldflags '-linkmode external -extldflags "-static"' .
+RUN set -ex \
+  && apk --no-cache add ca-certificates git make bash g++ linux-headers musl \
+  && rm -rf /var/cache/apk/* \
+  && mkdir -p /srv/exports \
+  && mkdir -p $GOPATH/src/github.com/hashicorp \
+  && cd $_ \
+  && git clone -c advice.detachedHead=false --depth 1 --branch v${NOMAD_VERSION} https://github.com/hashicorp/nomad.git \
+  && cd nomad \
+  && go build -x -o /srv/exports/nomad -tags "nonvidia release ui" --ldflags '-linkmode external -extldflags "-static"' .
+
+# RUNTIME IMAGE
+FROM ${IMAGE_VERSION}
+
+ENV NOMAD_ADDR="http://127.0.0.1:4646"
+ENV NOMAD_TOKEN=
+
+COPY --from=pre ["/srv/exports/nomad", "/"]
+
+# CREATE STARTUP LOGIC
+ENTRYPOINT ["/nomad"]
+CMD ["version"]

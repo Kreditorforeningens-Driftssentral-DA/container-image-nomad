@@ -1,0 +1,51 @@
+ARG IMAGE_VERSION="debian:stable-slim"
+
+# PRE-IMAGE
+FROM ${IMAGE_VERSION} AS pre
+
+ARG NOMAD_BASEURL="https://releases.hashicorp.com/nomad"
+ARG NOMAD_VERSION="1.2.4"
+ARG NOMAD_ARCH="linux_amd64"
+
+RUN set -ex \
+  && echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+  && apt-get update \
+  && apt-get -qqy install --no-install-recommends apt-utils > /dev/null 2>&1 \
+  && apt-get -qqy install --no-install-recommends ca-certificates curl unzip \
+  && apt-get autoclean \
+  && rm -rf /var/lib/apt/lists/* \
+  && mkdir -p /srv/exports \
+  && curl -fsSL --retry 5 "${NOMAD_BASEURL}/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_${NOMAD_ARCH}.zip" -o /tmp/nomad.zip \
+  && unzip /tmp/nomad.zip -d /srv/exports
+
+
+# RUNTIME IMAGE
+FROM ${IMAGE_VERSION}
+
+ENV NOMAD_ADDR="http://127.0.0.1:4646"
+ENV NOMAD_TOKEN=
+
+# INSTALL APT-PACKAGES
+RUN set -ex \
+  && echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
+  && apt-get update \
+  && apt-get -qqy install --no-install-recommends apt-utils > /dev/null 2>&1 \
+  && apt-get -qqy install --no-install-recommends ca-certificates dumb-init gosu \
+  && apt-get autoclean \
+  && rm -rf /var/lib/apt/lists/*
+
+# CREATE NON-PRIVILEGED USER
+RUN set -ex \
+  && addgroup nomad \
+  && adduser --quiet \
+     --ingroup nomad \
+     --gecos "Nomad User" \
+     --disabled-password nomad
+
+# ADD EXTERNAL RESOURCES
+COPY --from=pre ["/srv/exports/nomad", "/usr/local/bin/"]
+
+# CREATE STARTUP LOGIC
+COPY --chmod="755" ["scripts/debian-entrypoint.sh", "/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["nomad","version"]
