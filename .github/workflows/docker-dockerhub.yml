@@ -5,13 +5,13 @@
 # - https://github.com/docker/login-action
 # - https://github.com/docker/build-push-action
 ---
-name: Build Container (Docker Hub)
+name: Build (Docker Hub)
 
 on:
   workflow_dispatch:
 
-  schedule:
-  - cron: '15 0 15 */2 *' # https://crontab.guru/#15_0_1_*_*
+  #schedule:
+  #- cron: '15 0 15 */2 *' # https://crontab.guru/#15_0_1_*_*
 
 jobs:
   docker-build:
