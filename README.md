@@ -1,6 +1,5 @@
 # container-image-nomad
-[![Build Container (GitHub)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-github.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-github.yml)
-[![Build Container (Docker Hub)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-dockerhub.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-dockerhub.yml)
+[![Build (Docker)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-build.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-build.yml)
 
   * Pull image from [GitHub](https://hub.docker.com/repository/docker/kdsda/nomad).
   * Pull image from [Docker Hub](https://hub.docker.com/repository/docker/kdsda/nomad).
