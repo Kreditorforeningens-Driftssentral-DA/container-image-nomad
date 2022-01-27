@@ -71,7 +71,7 @@ jobs:
           type=raw,value=${{ matrix.version }}-${{ steps.timestamp.outputs.week }}
           type=raw,value=${{ matrix.version }}
         labels: |
-        org.opencontainers.image.title='nomad'
+          org.opencontainers.image.title='nomad'
           org.opencontainers.image.description='HashiCorp Nomad binary'
           org.opencontainers.image.vendor='Kreditorforeningen'
           org.opencontainers.image.authors='drift@kred.no'
