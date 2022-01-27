@@ -1,8 +1,10 @@
 # container-image-nomad
-[![Build and Push (Public)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-public.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-public.yml)
+[![Build Container (GitHub)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-github.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-github.yml)
+[![Build Container (Docker Hub)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-dockerhub.yml/badge.svg)](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad/actions/workflows/docker-dockerhub.yml)
 
-  * Download image from [Docker Hub](https://hub.docker.com/repository/docker/kdsda/nomad).
-  * Dockerfile on [GitHub](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad).
+  * Pull image from [GitHub](https://hub.docker.com/repository/docker/kdsda/nomad).
+  * Pull image from [Docker Hub](https://hub.docker.com/repository/docker/kdsda/nomad).
+  * Source on [GitHub](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad).
   * HashiCorp Nomad on [GitHub](https://github.com/hashicorp/nomad).
 
 
