@@ -1,0 +1,28 @@
+---
+version: '3.9'
+
+x-build:
+  args: &build-args
+    NOMAD_VERSION: '1.2.6'
+
+services:
+  nomad-alpine:
+    build:
+      dockerfile: Dockerfile.alpine
+      context: .
+      args: *build-args
+    command: ["version"]
+  
+  nomad-debian:
+    build:
+      dockerfile: Dockerfile.debian
+      context: .
+      args: *build-args
+    command: ["version"]
+  
+  nomad-scratch:
+    build:
+      dockerfile: Dockerfile.scratch
+      context: .
+      args: *build-args
+    command: ["version"]

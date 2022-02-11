@@ -30,6 +30,8 @@ jobs:
         - debian
         - scratch
         version:
+        - '1.2.6'
+        - '1.2.5'
         - '1.2.4'
 
     steps:

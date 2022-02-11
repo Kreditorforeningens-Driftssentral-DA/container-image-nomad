@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## February 11, 2022
+  * Added v1.2.5 & v1.2.6 to scheduled build-matrix
+  * Added docker-compose for simplified local build-testing.
+
 ## January 27, 2022
   * Added action for github container registry.
 
