@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## June 1, 2022
+  * Updated build scheduled matrix: v1.2.8 & v1.3.1
+
 ## February 11, 2022
   * Added v1.2.5 & v1.2.6 to scheduled build-matrix
   * Added docker-compose for simplified local build-testing.
