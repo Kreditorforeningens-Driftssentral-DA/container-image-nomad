@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## August 15, 2022
+  * Updated build scheduled matrix: v1.2.10 & v1.3.3
+
 ## June 1, 2022
   * Updated build scheduled matrix: v1.2.8 & v1.3.1
 
