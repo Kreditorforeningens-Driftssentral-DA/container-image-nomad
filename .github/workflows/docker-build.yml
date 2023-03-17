@@ -29,9 +29,8 @@ jobs:
         - alpine
         - scratch
         version:
-        - '1.5.0-beta.1'
-        - '1.4.3'
-        - '1.4.2'
+        - '1.5.1'
+        - '1.4.6'
 
     steps:
     -
