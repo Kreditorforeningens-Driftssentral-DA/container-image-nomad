@@ -6,6 +6,10 @@
   * Source on [GitHub](https://github.com/Kreditorforeningens-Driftssentral-DA/container-image-nomad).
   * HashiCorp Nomad on [GitHub](https://github.com/hashicorp/nomad).
 
+```bash
+# Start a development instance locally
+docker run --rm -it -p 4646:4646 kdsda/nomad:alpine-1.5.6 agent -dev -bind 0.0.0.0
+```
 
 # IMAGES
 
